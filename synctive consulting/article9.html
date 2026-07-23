@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Streamlining Purchase Approvals using Workflows | Synctive</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    body {
+      font-family: Inter, sans-serif;
+    }
+  </style>
+
+</head>
+
+<body class="bg-[#0a192f] text-[#ccd6f6]">
+
+  <div class="max-w-4xl mx-auto px-6 py-16">
+
+    <!-- Title -->
+    <h1 class="text-4xl font-bold text-[#f97316] mb-8">
+      Streamlining Purchase Approvals using Workflows
+    </h1>
+
+    <!-- Introduction -->
+    <p class="mb-6 leading-relaxed">
+      Managing purchase approvals manually can slow down operations and increase the risk of errors.
+      Microsoft Dynamics 365 Business Central provides built-in workflow capabilities that help
+      automate and streamline approval processes, ensuring efficiency and control.
+    </p>
+
+    <!-- What are Purchase Approval Workflows -->
+    <h2 class="text-2xl font-semibold text-[#f97316] mb-4 mt-10">
+      What are Purchase Approval Workflows?
+    </h2>
+
+    <p class="mb-6 leading-relaxed">
+      Purchase approval workflows in Business Central allow organizations to define rules that
+      automatically route purchase documents (such as purchase orders or invoices) for approval.
+      These workflows ensure that the right people review and approve transactions before they are finalized.
+    </p>
+
+    <!-- Key Benefits -->
+    <h2 class="text-2xl font-semibold text-[#f97316] mb-4 mt-10">
+      Key Benefits
+    </h2>
+
+    <ul class="list-disc pl-6 mb-6 space-y-2">
+      <li>Automates approval processes and reduces manual work</li>
+      <li>Ensures compliance with company policies</li>
+      <li>Improves visibility into approval status</li>
+      <li>Reduces delays in purchasing operations</li>
+    </ul>
+
+    <!-- How It Works -->
+    <h2 class="text-2xl font-semibold text-[#f97316] mb-4 mt-10">
+      How It Works
+    </h2>
+
+    <p class="mb-6 leading-relaxed">
+      Workflows are configured by defining conditions that trigger approval requests.
+      For example, a purchase order exceeding a certain amount can automatically require
+      approval from a manager. Notifications are sent to approvers, and the system tracks
+      each step until the process is complete.
+    </p>
+
+    <!-- Steps to Set Up -->
+    <h2 class="text-2xl font-semibold text-[#f97316] mb-4 mt-10">
+      Steps to Set Up Purchase Approval Workflows
+    </h2>
+
+    <ol class="list-decimal pl-6 mb-6 space-y-2">
+      <li>Open Workflows from the Search function</li>
+      <li>Click on "New Workflow from Template" to create a new workflow from the Microsoft provided template, for ‘Purchase Invoice Approval Workflow’</li>
+      <li>Set the conditions that trigger the workflow. For example, you might specify that the workflow activates when a purchase order exceeds a certain amount.</li>
+      <li>Enable the workflow</li>
+      <li>To set the Approvers, start with  ‘Add Record Restriction’</li>
+
+      <!-- IMAGE 1 -->
+    <div class="my-10">
+      <img 
+        src="images/blog (9)/photo1.avif"
+        alt="Implementing price changes in worksheet"
+        class="w-full rounded-xl shadow-lg border border-slate-700"
+      >
+    </div>
+      <li>The below options will ensure that the approval requests go in a chain to the approvers until the amount threshold is reached, as set up in the ‘Approval User Setup’</li>
+      <li>Enable the Workflow to use this setup for all new documents moving forward.</li>
+    </ol>
+
+      <!-- IMAGE 2 -->
+    <div class="my-10">
+      <img 
+        src="images/blog (9)/photo2.avif"
+        alt="Implementing price changes in worksheet"
+        class="w-full rounded-xl shadow-lg border border-slate-700"
+      >
+    </div>
+
+    <!-- Conclusion -->
+    <h2 class="text-2xl font-semibold text-[#f97316] mb-4 mt-10">
+      
+    </h2>
+
+    <p class="mb-6 leading-relaxed">
+      Implementing purchase approval workflows in Business Central helps organizations
+      maintain control over spending while improving efficiency. By automating approvals,
+      businesses can reduce bottlenecks, increase accountability, and ensure smoother operations.
+    </p>
+
+    <!-- Back Button -->
+    <a 
+      href="blog.html"
+      class="inline-block mt-10 px-6 py-3 border border-[#f97316] text-[#f97316] rounded-md hover:bg-[#f97316] hover:text-[#0a192f] transition"
+    >
+      ← Back to Blog
+    </a>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Validate Purchase Totals Before Posting | Synctive</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: Inter, sans-serif;
+}
+</style>
+</head>
+
+<body class="bg-[#0a192f] text-[#ccd6f6]">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full bg-[#0a192f]/90 backdrop-blur z-50">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+<a href="index.html" class="text-2xl font-bold text-[#f97316]">
+Synctive
+</a>
+
+<div class="space-x-8">
+<a href="index.html#about" class="hover:text-[#f97316]">About</a>
+<a href="index.html#capabilities" class="hover:text-[#f97316]">Capabilities</a>
+<a href="blog.html" class="hover:text-[#f97316]">Blog</a>
+<a href="index.html#contact" class="hover:text-[#f97316]">Contact</a>
+</div>
+
+</nav>
+</header>
+
+
+<!-- MAIN -->
+<main class="pt-32 pb-24">
+
+<div class="container mx-auto px-6 max-w-4xl">
+
+<h1 class="text-4xl md:text-5xl font-bold text-[#f97316] mb-10">
+Validate Purchase Totals Before Posting in Business Central
+</h1>
+
+
+<p class="text-lg leading-relaxed mb-8">
+Tired of mismatches between vendor invoices and your system entries?
+Business Central now offers a global feature to help ensure accuracy before posting purchase documents.
+</p>
+
+<p class="text-lg leading-relaxed mb-10">
+By enabling <strong>"Check Doc. Total Amounts"</strong> in the Purchases & Payables Setup, users must enter and validate the total invoice amount (including tax) and Tax amount against the purchase lines.
+</p>
+
+
+
+
+<!-- WHY -->
+<section class="mb-12">
+<h2 class="text-3xl font-semibold text-[#f97316] mb-5">
+Why This Feature Matters
+</h2>
+
+<p class="text-lg leading-relaxed">
+Ensure accuracy in purchase invoices by validating that header totals (including VAT) match the calculated line totals.
+</p>
+</section>
+
+
+<!-- STEPS -->
+<section class="mb-12">
+<h2 class="text-3xl font-semibold text-[#f97316] mb-5">
+Step-by-Step Setup
+</h2>
+
+<p class="text-lg mb-6">
+Below is the step-by-step approach on how to test this feature: 
+</p>
+
+<div class="space-y-6 text-lg">
+
+<div>
+<h3 class="text-xl font-semibold text-white mb-2">
+Step 1: Open Purchase & Payables Setup
+</h3>
+<p>Use the search bar and open <strong>Purchase & Payables Setup</strong>.</p>
+</div>
+
+<div>
+<h3 class="text-xl font-semibold text-white mb-2">
+Step 2: Enable Check Doc. Total Amounts
+</h3>
+<p>In the General section, toggle on <strong>Check Doc. Total Amounts</strong>.</p>
+</div>
+
+<!-- IMAGE 1 -->
+<div class="my-10">
+<img
+src="images/blog (1)/photo1.avif"
+alt="Purchase & Payables Setup"
+class="w-full rounded-xl shadow-lg border border-slate-700">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CREATE INVOICE -->
+<section class="mb-12">
+<h2 class="text-3xl font-semibold text-[#f97316] mb-5">
+Creating a Purchase Invoice
+</h2>
+
+<p class="text-lg mb-6">
+Go to the <strong>Purchase Invoices</strong> page and click <strong>New</strong>. Enter:
+</p>
+
+<ul class="list-disc ml-8 space-y-2 text-lg">
+<li>Vendor</li>
+<li>Dates</li>
+<li>Line items</li>
+<li>Quantity</li>
+<li>Unit Cost</li>
+<li>VAT Codes</li>
+</ul>
+
+</section>
+
+
+<!-- TOTALS -->
+<section class="mb-12">
+<h2 class="text-3xl font-semibold text-[#f97316] mb-5">
+Entering Document Totals
+</h2>
+
+<p class="text-lg mb-6">
+In the General section of the Purchase Invoice, enter:
+</p>
+
+<ul class="list-disc ml-8 text-lg space-y-3">
+<li><strong>Doc. Amount Incl. Tax</strong> – Total invoice amount</li>
+<li><strong>Doc. Amount Tax</strong> – VAT portion</li>
+</ul>
+
+<p class="text-lg mt-6">
+Once the total is entered, the Tax amount auto-fills.
+</p>
+</section>
+
+<!-- IMAGE 2 -->
+<div class="my-10">
+<img
+src="images/blog (1)/photo2.avif"
+alt="Enable Check Document Total Amounts"
+class="w-full rounded-xl shadow-lg border border-slate-700">
+</div>
+
+<!-- IMAGE 3 -->
+<div class="my-10">
+<img
+src="images/blog (1)/photo3.avif"
+alt="Purchase Invoice Example"
+class="w-full rounded-xl shadow-lg border border-slate-700">
+</div>
+
+<!-- POSTING -->
+<section class="mb-12">
+<h2 class="text-3xl font-semibold text-[#f97316] mb-5">
+Posting Validation
+</h2>
+
+<p class="text-lg mb-6">
+Click <strong>Post</strong>. Business Central compares:
+</p>
+
+<ul class="list-disc ml-8 text-lg space-y-3">
+<li>Entered header totals</li>
+<li>Calculated totals from lines</li>
+</ul>
+
+<p class="text-lg mt-6">
+If there is a mismatch, an error appears preventing posting.
+</p>
+
+<!-- IMAGE 4 -->
+<div class="my-10">
+<img
+src="images/blog (1)/photo4.avif"
+alt="Posting Validation Error"
+class="w-full rounded-xl shadow-lg border border-slate-700">
+</div>
+
+</section>
+
+
+<!-- CONCLUSION -->
+<section class="mb-12">
+<h2 class="text-3xl font-semibold text-[#f97316] mb-5">
+Conclusion
+</h2>
+
+<p class="text-lg leading-relaxed">
+This small but powerful control reduces human errors, overpayments, and ensures clean financial records.
+</p>
+
+<p class="text-lg leading-relaxed mt-6">
+Whether using Purchase Invoices or Credit Memos, this ensures totals align before posting.
+</p>
+</section>
+
+
+<!-- Back Button -->
+
+<a href="blog.html"
+class="inline-block mt-10 px-6 py-3 border border-[#f97316] text-[#f97316] rounded-md hover:bg-[#f97316] hover:text-[#0a192f] transition">
+
+← Back to Blog
+
+</a>
+
+</div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synctive Consulting</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'%3E%3C/path%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0a192f', // A deep navy/dark blue
+                        'secondary-blue': '#f97316', // A vibrant teal/aqua accent
+                        'light-slate': '#ccd6f6', // Light grayish blue for text
+                        'dark-slate': '#8892b0', // Darker grayish blue for secondary text
+                        'navy-shadow': 'rgba(2,12,27,0.7)', // For shadows/overlays
+                        'card-bg': '#112240', // Slightly lighter dark blue for cards
+                        'primary-dark': '#0a192f',
+                        'secondary-blue': '#f97316', // already orange
+                
+                        
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Modern sans-serif
+                        mono: ['SF Mono', 'monospace'], // For code/techy elements
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 0.8s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        /* Custom scrollbar for a sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #112240;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #233554;
+        }
+        
+        .navbar-shadow {
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #f97316, #fb923c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Custom styles for the capability matrix to ensure consistent height and alignment */
+        .capability-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            min-height: 220px; /* Ensure consistent height for visual balance */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+    </style>
+</head>
+<body class="bg-primary-dark text-light-slate font-sans">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 w-full z-50 bg-primary-dark/90 backdrop-blur-sm navbar-shadow">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="text-2xl font-bold text-secondary-blue">
+                <span class="gradient-text">Synctive</span>
+            </a>
+            
+            <!-- Desktop Nav -->
+          
+
+<li>
+<a href="#about" class="hover:text-secondary-blue transition-colors duration-300">
+About
+</a>
+</li>
+
+<li>
+<a href="#capabilities" class="hover:text-secondary-blue transition-colors duration-300">
+Capabilities
+</a>
+</li>
+
+<li>
+<a href="blog.html" class="hover:text-secondary-blue transition-colors duration-300">
+Blog
+</a>
+</li>
+
+<li>
+<a href="#contact" class="hover:text-secondary-blue transition-colors duration-300">
+Contact
+</a>
+</li>
+
+</ul>
+
+            <!-- Mobile Nav Button -->
+            <button id="mobile-menu-button" class="md:hidden text-secondary-blue focus:outline-none">
+                <i data-feather="menu" class="w-7 h-7"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full h-screen bg-primary-dark flex flex-col items-center justify-center space-y-8 text-xl transform translate-x-full transition-transform duration-300 ease-in-out">
+            <button id="close-menu-button" class="absolute top-6 right-6 text-secondary-blue focus:outline-none">
+                <i data-feather="x" class="w-8 h-8"></i>
+            </button>
+            <a href="#hero" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">Home</a>
+            <a href="#about" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">About</a>
+            <a href="#capabilities" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">Capabilities</a>
+            <a href="blog.html" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">Blog</a>
+            <a href="#process" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">Process</a>
+            <a href="#team" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">Team</a>
+            <a href="#contact" class="hover:text-secondary-blue transition-colors duration-300" onclick="closeMobileMenu()">Contact</a>
+            <a href="#" class="mt-8 px-6 py-3 border-2 border-secondary-blue text-secondary-blue rounded-md hover:bg-secondary-blue/10 transition-colors duration-300" onclick="closeMobileMenu()">Resume</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative flex items-center justify-center h-screen bg-cover bg-center" style="background-image: url('http://static.photos/technology/1920x1080/77');">
+            <div class="absolute inset-0 bg-primary-dark opacity-80"></div>
+            <div class="relative z-10 text-center text-white px-6 max-w-4xl" data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-secondary-blue text-lg mb-4 font-mono tracking-wide" data-aos="fade-up" data-aos-delay="200">Perfecting ERP. Delivering Efficiency.</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6" data-aos="fade-up" data-aos-delay="400">
+                    Transforming Vision <br class="hidden md:block"> into Digital Reality
+                </h1>
+                <p class="text-lg md:text-xl text-dark-slate mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="600">
+                    Empowering your organization with premium Microsoft Business Central 
+                    and Power BI consulting for operational excellence and strategic growth.
+                </p>
+                <a href="#about" class="inline-block bg-secondary-blue text-primary-dark px-8 py-4 rounded-md text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="800">
+                    Get Started <i data-feather="arrow-right" class="inline-block ml-2 w-5 h-5 align-middle"></i>
+                </a>
+            </div>
+            <!-- Scroll Down Indicator -->
+            <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 text-secondary-blue animate-bounce-slow" aria-label="Scroll down">
+                <i data-feather="chevrons-down" class="w-8 h-8"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-primary-dark">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right" data-aos-duration="1000">
+                        <h2 class="text-4xl font-bold text-light-slate mb-6">About <span class="gradient-text">Synctive</span></h2>
+                        <p class="text-dark-slate text-lg mb-4">
+                            At Synctive Consulting, we help businesses unlock the full potential of their operations through innovative technology solutions and strategic consulting. Specializing in Microsoft Dynamics 365 Business Central, Power BI, and business process optimization, we work with organizations to streamline workflows, improve decision-making, and create systems that support long-term growth.
+                        </p>
+                        <p class="text-dark-slate text-lg mb-4">
+                            Our team combines technical expertise with a deep understanding of business operations to deliver solutions that are practical, scalable, and tailored to each client’s unique needs. From implementation and customization to training and ongoing support, we partner with businesses every step of the way to ensure technology drives real value.
+                        </p>
+                        <p class="text-dark-slate text-lg">
+                            At Synctive Consulting, we believe technology should simplify the way businesses operate — not complicate it. Our mission is to connect people, processes, and data to help organizations work smarter and achieve more.
+                        </p>
+                        <ul class="mt-6 space-y-2 text-secondary-blue list-inside">
+                            <li><i data-feather="check-circle" class="inline-block mr-2 w-5 h-5"></i> Microsoft Expertise</li>
+                            <li><i data-feather="check-circle" class="inline-block mr-2 w-5 h-5"></i> Data-Driven Insights</li>
+                            <li><i data-feather="check-circle" class="inline-block mr-2 w-5 h-5"></i> Innovative Solutions</li>
+                        </ul>
+                    </div>
+                    <div class="relative group" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                        <img src="http://static.photos/workspace/640x360/123" alt="Our Team at Work" class="rounded-lg shadow-xl relative z-10 w-full h-auto">
+                        <div class="absolute -bottom-4 -right-4 w-full h-full bg-secondary-blue opacity-20 rounded-lg transform group-hover:scale-105 transition-transform duration-300"></div>
+                        <div class="absolute -top-4 -left-4 w-full h-full border-4 border-secondary-blue opacity-50 rounded-lg transform group-hover:scale-95 transition-transform duration-300"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section (Capability Matrix) -->
+        <section id="capabilities" class="py-24 bg-card-bg">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-light-slate mb-4" data-aos="fade-up">Our <span class="gradient-text">Capabilities</span></h2>
+                    <p class="text-dark-slate text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                        We deliver end-to-end consulting services designed to elevate your operational efficiency and drive sustainable business growth.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Capability Card 1 -->
+                    <div class="capability-card bg-primary-dark p-8 rounded-lg shadow-lg border border-transparent hover:border-secondary-blue/50" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-secondary-blue mb-4">
+                            <i data-feather="code" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-light-slate mb-3">Business Central Setup</h3>
+                        <p class="text-dark-slate leading-relaxed">
+                            Streamline your organization with Microsoft Business Central integration. Achieve real-time financial visibility, automate processes, and make decisions for business success
+                        </p>
+                    </div>
+
+                    <!-- Capability Card 2 -->
+                    <div class="capability-card bg-primary-dark p-8 rounded-lg shadow-lg border border-transparent hover:border-secondary-blue/50" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-secondary-blue mb-4">
+                            <i data-feather="layout" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-light-slate mb-3">Power BI Analytics</h3>
+                        <p class="text-dark-slate leading-relaxed">
+                            Unlock the potential of your data with Power BI analytics. Leverage interactive visualizations and gain actionable insights to drive performance and achieve strategic goals.
+                        </p>
+                    </div>
+
+                    <!-- Capability Card 3 -->
+                    <div class="capability-card bg-primary-dark p-8 rounded-lg shadow-lg border border-transparent hover:border-secondary-blue/50" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-secondary-blue mb-4">
+                            <i data-feather="cloud" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-light-slate mb-3">Business Process Optimization</h3>
+                        <p class="text-dark-slate leading-relaxed">
+                            Optimize your business processes with our expert consulting. Identify inefficiencies, implement best practices, and transform your operations for sustained growth and competitiveness.
+                        </p>
+                    </div>
+
+                    <!-- Capability Card 4 -->
+                    <div class="capability-card bg-primary-dark p-8 rounded-lg shadow-lg border border-transparent hover:border-secondary-blue/50" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-secondary-blue mb-4">
+                            <i data-feather="server" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-light-slate mb-3">Training & Support</h3>
+                        <p class="text-dark-slate leading-relaxed">
+                            Equip your team with the knowledge and support they need to maximize the benefits of Microsoft Business Central and Power BI. Our training programs and ongoing support ensure a smooth transition and continued success.
+                        </p>
+                    </div>
+
+                    <!-- Capability Card 5 -->
+                    <div class="capability-card bg-primary-dark p-8 rounded-lg shadow-lg border border-transparent hover:border-secondary-blue/50" data-aos="fade-up" data-aos-delay="500">
+                        <div class="text-secondary-blue mb-4">
+                            <i data-feather="bar-chart-2" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-light-slate mb-3">Custom Solutions Development</h3>
+                        <p class="text-dark-slate leading-relaxed">
+                            Tailor-made solutions for your unique business requirements. Our team designs and develops custom applications and extensions to elevate your business processes and achieve unparalleled efficiency.
+                        </p>
+                    </div>
+
+                    <!-- Capability Card 6 -->
+                    <div class="capability-card bg-primary-dark p-8 rounded-lg shadow-lg border border-transparent hover:border-secondary-blue/50" data-aos="fade-up" data-aos-delay="600">
+                        <div class="text-secondary-blue mb-4">
+                            <i data-feather="shield" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-light-slate mb-3">Strategic Consulting</h3>
+                        <p class="text-dark-slate leading-relaxed">
+                            Partner with us for strategic consulting services that align technology with your business objectives. Leverage our expertise to drive innovation, growth, and sustainable competitive advantage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+        <!-- Blog Banner Section -->
+<section class="py-24 bg-primary-dark">
+    <div class="container mx-auto px-6 max-w-6xl text-center">
+
+        <h2 class="text-5xl md:text-6xl font-bold text-light-slate mb-8" data-aos="fade-up">
+            Latest from <span class="gradient-text">Our Blog</span>
+        </h2>
+
+        <a href="blog.html"
+           class="inline-block bg-secondary-blue text-primary-dark px-8 py-4 rounded-md text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg"
+           data-aos="fade-up"
+           data-aos-delay="200">
+
+            View All Posts
+            <i data-feather="arrow-right" class="inline-block ml-2 w-5 h-5"></i>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-card-bg">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <h2 class="text-4xl font-bold text-light-slate mb-4" data-aos="fade-up">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="text-dark-slate text-lg mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Have a project in mind or just want to say hello? We'd love to hear from you.
+                    Fill out the form below or reach out directly.
+                </p>
+
+                <div class="bg-card-bg p-8 rounded-lg shadow-xl" data-aos="fade-up" data-aos-delay="400">
+                    <form action="https://formsubmit.co/nilavanramesh6458@gmail.com" method="POST" class="space-y-6">
+                        <input type="hidden" name="_subject" value="New Synctive Consulting Contact Request">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="sr-only">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" class="w-full p-4 bg-primary-dark border border-dark-slate rounded-md text-light-slate focus:ring-2 focus:ring-secondary-blue focus:border-transparent transition-colors duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Your Email" class="w-full p-4 bg-primary-dark border border-dark-slate rounded-md text-light-slate focus:ring-2 focus:ring-secondary-blue focus:border-transparent transition-colors duration-300" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="sr-only">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" class="w-full p-4 bg-primary-dark border border-dark-slate rounded-md text-light-slate focus:ring-2 focus:ring-secondary-blue focus:border-transparent transition-colors duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Your Message" class="w-full p-4 bg-primary-dark border border-dark-slate rounded-md text-light-slate focus:ring-2 focus:ring-secondary-blue focus:border-transparent transition-colors duration-300" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-secondary-blue text-primary-dark px-8 py-4 rounded-md text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Send Message <i data-feather="send" class="inline-block ml-2 w-5 h-5 align-middle"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="mt-16 text-dark-slate grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex flex-col items-center">
+                        <i data-feather="mail" class="w-8 h-8 text-secondary-blue mb-3"></i>
+                        <p class="font-semibold text-light-slate">Email Us</p>
+                        <p>support@synctiveconsulting.com</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i data-feather="phone" class="w-8 h-8 text-secondary-blue mb-3"></i>
+                        <p class="font-semibold text-light-slate">Call Us</p>
+                        <p>+1 (647) 469 3515</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <i data-feather="map-pin" class="w-8 h-8 text-secondary-blue mb-3"></i>
+                        <p class="font-semibold text-light-slate">Visit Us</p>
+                        <p>104 Crockford Blvd, Scarborough ON M1R 3C3</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark py-12 border-t border-card-bg">
+        <div class="container mx-auto px-6 text-center">
+            <a href="#hero" class="text-3xl font-bold text-secondary-blue mb-4 inline-block">
+                <span class="gradient-text">Synctive</span>
+            </a>
+            <p class="text-dark-slate mb-6 max-w-md mx-auto">
+                Innovating the future, one solution at a time. Partner with Synctive Consulting for your digital journey.
+            </p>
+            <div class="flex justify-center space-x-6 text-dark-slate mb-6">
+
+    <a href="#about" class="hover:text-secondary-blue transition-colors duration-300">
+        About
+    </a>
+
+    <a href="#capabilities" class="hover:text-secondary-blue transition-colors duration-300">
+        Capabilities
+    </a>
+
+    <a href="blog.html" class="hover:text-secondary-blue transition-colors duration-300">
+        Blog
+    </a>
+
+    <a href="#contact" class="hover:text-secondary-blue transition-colors duration-300">
+        Contact
+    </a>
+
+</div>
+           
+            <p class="text-dark-slate text-sm">&copy; 2023 Synctive Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            mirror: false,
+        });
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.addEventListener('transitionend', function handler() {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.removeEventListener('transitionend', handler);
+            });
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMenuButton.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking outside or on a link
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Add sticky navbar shadow on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                header.classList.add('navbar-shadow');
+            } else {
+                header.classList.remove('navbar-shadow');
+            }
+        });
+
+        // Set initial shadow state
+        if (window.scrollY > 0) {
+            header.classList.add('navbar-shadow');
+        }
+    </script>
+</body>
+</html>
